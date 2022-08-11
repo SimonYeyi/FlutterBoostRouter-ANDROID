@@ -1,4 +1,4 @@
-package com.sm.myapplication
+package com.sm.android_flutter
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,7 +7,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.idlefish.flutterboost.FlutterBoost
 import com.idlefish.flutterboost.FlutterBoostRouteOptions
 import com.idlefish.flutterboost.containers.FlutterActivityLaunchConfigs
-import com.sm.myapplication.databinding.ActivityFullscreenBinding
+import com.sm.android_flutter.databinding.ActivityFullscreenBinding
 
 @Route(path = "/target/main")
 class MainActivity : AppCompatActivity() {

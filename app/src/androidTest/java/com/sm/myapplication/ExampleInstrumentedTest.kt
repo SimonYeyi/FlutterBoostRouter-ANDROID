@@ -1,4 +1,4 @@
-package com.sm.myapplication
+package com.sm.android_flutter
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.sm.myapplication", appContext.packageName)
+        assertEquals("com.sm.android_flutter", appContext.packageName)
     }
 }

@@ -1,4 +1,4 @@
-package com.sm.myapplication
+package com.sm.android_flutter
 
 import org.junit.Test
 

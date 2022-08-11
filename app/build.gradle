@@ -8,7 +8,7 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.sm.myapplication"
+        applicationId "com.sm.android_flutter"
         minSdk 21
         targetSdk 32
         versionCode 1

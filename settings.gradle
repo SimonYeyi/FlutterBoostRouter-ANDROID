@@ -12,7 +12,7 @@ pluginManagement {
         mavenCentral()
     }
 }*/
-rootProject.name = "flutterbootDev"
+rootProject.name = "AndroidFlutterBoost"
 include ':app'
 include ':lib_flutterboost'
 
