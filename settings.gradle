@@ -1,0 +1,21 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+/*dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}*/
+rootProject.name = "flutterbootDev"
+include ':app'
+include ':lib_flutterboost'
+
+setBinding(new Binding([gradle: this]))
+evaluate(new File(settingsDir, 'lib_flutterboost/.android/include_flutter.groovy'))
+
