@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
 import com.idlefish.flutterboost.FlutterBoost
 import com.idlefish.flutterboost.FlutterBoostRouteOptions
 import com.idlefish.flutterboost.containers.FlutterActivityLaunchConfigs
@@ -20,12 +21,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.root.setOnClickListener {
-            FlutterBoost.instance()
+            ARouter.getInstance().build("/")
+                .withInt("requestCode", REQUEST_CODE_FLUTTER_ROOT)
+                .withString("data", "From MainActivity")
+                .navigation(this)
+/*            FlutterBoost.instance()
                 .open(
                     FlutterBoostRouteOptions.Builder().pageName("/")
                         .requestCode(REQUEST_CODE_FLUTTER_ROOT)
                         .arguments(mapOf("data" to "From MainActivity")).build()
-                )
+                )*/
         }
     }
 

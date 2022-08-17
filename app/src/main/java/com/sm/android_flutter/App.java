@@ -1,15 +1,9 @@
 package com.sm.android_flutter;
 
 import android.app.Application;
-import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
 
 import com.alibaba.android.arouter.facade.Postcard;
-import com.alibaba.android.arouter.facade.callback.InterceptorCallback;
-import com.alibaba.android.arouter.facade.service.PathReplaceService;
-import com.alibaba.android.arouter.facade.template.IInterceptor;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.idlefish.flutterboost.FlutterBoost;
 import com.idlefish.flutterboost.FlutterBoostDelegate;
@@ -17,9 +11,7 @@ import com.idlefish.flutterboost.FlutterBoostRouteOptions;
 import com.idlefish.flutterboost.containers.FlutterBoostActivity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import io.flutter.embedding.android.FlutterActivityLaunchConfigs;
@@ -63,7 +55,7 @@ public class App extends Application {
             @Override
             public void pushFlutterRoute(FlutterBoostRouteOptions options) {
                 Intent intent = new FlutterBoostActivity.CachedEngineIntentBuilder(FlutterBoostActivity.class)
-                        .backgroundMode(FlutterActivityLaunchConfigs.BackgroundMode.transparent)
+                        .backgroundMode(options.opaque() ? FlutterActivityLaunchConfigs.BackgroundMode.opaque : FlutterActivityLaunchConfigs.BackgroundMode.transparent)
                         .destroyEngineWithActivity(false)
                         .uniqueId(options.uniqueId())
                         .url(options.pageName())
