@@ -6,6 +6,7 @@ import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.idlefish.flutterboost.FlutterBoost;
 
 @Route(path = "/target/your")
 public class YourTargetActivity extends AppCompatActivity {
