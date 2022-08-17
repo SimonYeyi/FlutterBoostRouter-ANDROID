@@ -22,6 +22,7 @@ public class App extends Application {
         super.onCreate();
 
         ARouter.init(this);
+        RoutePathReplacer.getInstance().add(new TargetPathReplacer());
 
         FlutterBoost.instance().setup(this, new FlutterBoostDelegate() {
             @Override

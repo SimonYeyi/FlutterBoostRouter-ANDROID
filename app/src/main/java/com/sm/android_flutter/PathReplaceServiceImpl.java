@@ -11,24 +11,9 @@ public class PathReplaceServiceImpl implements PathReplaceService {
     @Override
     public String forString(String path) {
         if (!path.startsWith("/")) path = String.format("/%s", path);
-        String replacePath = replaceNativePath(path);
-        if (replacePath.equals(path)) {
-            if (path.lastIndexOf("/") == 0) path = String.format("/flutter%s", path);
-            replacePath = replaceFlutterPath(path);
-        }
+        String replacePath = RoutePathReplacer.getInstance().replace(path);
+        if (replacePath.lastIndexOf("/") == 0) replacePath = String.format("/flutter%s", path);
         return replacePath;
-    }
-
-
-    private String replaceNativePath(String path) {
-        if (path.equals("/your")) {
-            return "/target/your";
-        }
-        return path;
-    }
-
-    private String replaceFlutterPath(String path) {
-        return path;
     }
 
     @Override
