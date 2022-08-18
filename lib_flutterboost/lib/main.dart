@@ -16,7 +16,7 @@ void main() {
   CustomFlutterBinding();
   runApp(MyApp());
 
-  AppPlugin.get();
+  AppPlugin.get().getInfo().then((value) => print(value));
 }
 
 ///创建一个自定义的Binding，继承和with的关系如下，里面什么都不用写

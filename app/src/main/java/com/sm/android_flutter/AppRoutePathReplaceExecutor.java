@@ -1,4 +1,4 @@
-package com.sm.android_flutter.module;
+package com.sm.android_flutter;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.sm.android_flutter.lib.RoutePathReplaceExecutor;

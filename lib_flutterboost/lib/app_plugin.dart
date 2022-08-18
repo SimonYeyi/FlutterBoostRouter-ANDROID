@@ -13,8 +13,8 @@ class AppPlugin {
   }
 
   AppPlugin() {
-    _methodChannel.setMethodCallHandler((methodCall) async {
-      switch (methodCall.method) {
+    _methodChannel.setMethodCallHandler((call) async {
+      switch (call.method) {
         case "flutterMethod":
           print("invoke flutterMethod");
           break;
@@ -22,5 +22,9 @@ class AppPlugin {
           break;
       }
     });
+  }
+
+  Future<String?> getInfo() async {
+    return _methodChannel.invokeMethod<String?>("getInfo");
   }
 }
