@@ -7,6 +7,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.idlefish.flutterboost.containers.FlutterActivityLaunchConfigs
 import com.sm.android_flutter.databinding.ActivityFullscreenBinding
+import com.sm.android_flutter.module.ModuleFlutterMethods
 
 @Route(path = "/target/main")
 class MainActivity : AppCompatActivity() {
@@ -29,6 +30,10 @@ class MainActivity : AppCompatActivity() {
                         .requestCode(REQUEST_CODE_FLUTTER_ROOT)
                         .arguments(mapOf("data" to "From MainActivity")).build()
                 )*/
+
+            val moduleFlutterMethods = ARouter.getInstance().build("/module/flutter_methods")
+                .navigation() as ModuleFlutterMethods
+            moduleFlutterMethods.flutterMethod()
         }
     }
 

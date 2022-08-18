@@ -1,4 +1,4 @@
-package com.sm.android_flutter;
+package com.sm.android_flutter.lib;
 
 import android.content.Context;
 import android.net.Uri;
@@ -6,8 +6,8 @@ import android.net.Uri;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.facade.service.PathReplaceService;
 
-@Route(path = "/global/path_replace")
-public class PathReplaceServiceImpl implements PathReplaceService {
+@Route(path = "/route/path_replace")
+public class RoutePathReplaceService implements PathReplaceService {
     @Override
     public String forString(String path) {
         if (!path.startsWith("/")) path = String.format("/%s", path);

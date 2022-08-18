@@ -1,4 +1,4 @@
-package com.sm.android_flutter;
+package com.sm.android_flutter.lib;
 
 import android.content.Intent;
 
@@ -15,7 +15,7 @@ import java.util.Map;
 
 import io.flutter.embedding.android.FlutterActivityLaunchConfigs;
 
-public class FlutterBoostDelegateImpl implements FlutterBoostDelegate {
+public class ARouterFlutterBoostDelegate implements FlutterBoostDelegate {
     @Override
     public void pushNativeRoute(FlutterBoostRouteOptions options) {
         Map<String, Object> arguments = options.arguments();

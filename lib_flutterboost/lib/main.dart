@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boost/flutter_boost.dart';
 import 'package:get/get.dart';
+import 'package:lib_flutterboost/app_plugin.dart';
 
 @pragma('vm:entry-point')
 void mainDev() {
@@ -10,9 +11,12 @@ void mainDev() {
 
 void main() {
   print('------------------------------main------------------------------');
+
   ///这里的CustomFlutterBinding调用务必不可缺少，用于控制Boost状态的resume和pause
   CustomFlutterBinding();
   runApp(MyApp());
+
+  AppPlugin.get();
 }
 
 ///创建一个自定义的Binding，继承和with的关系如下，里面什么都不用写

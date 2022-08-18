@@ -1,4 +1,4 @@
-package com.sm.android_flutter;
+package com.sm.android_flutter.lib;
 
 import androidx.annotation.NonNull;
 
@@ -14,8 +14,8 @@ public class AppFlutterPlugin implements FlutterPlugin {
     public void onAttachedToEngine(@NonNull FlutterPluginBinding binding) {
         BinaryMessenger binaryMessenger = binding.getBinaryMessenger();
         methodChannel = new MethodChannel(binaryMessenger, "com.premom.lib_flutter/native_flutter");
-        methodChannel.setMethodCallHandler(new NativeMethodCallHandler());
-        FlutterMethods.getInstance().setup(methodChannel);
+        methodChannel.setMethodCallHandler(new NativeMethodCallDispatcher());
+        FlutterMethods.setup(methodChannel);
     }
 
     @Override

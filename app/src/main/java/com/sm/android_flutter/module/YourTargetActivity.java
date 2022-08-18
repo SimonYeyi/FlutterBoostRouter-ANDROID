@@ -1,4 +1,4 @@
-package com.sm.android_flutter;
+package com.sm.android_flutter.module;
 
 import android.content.Intent;
 import android.os.Handler;

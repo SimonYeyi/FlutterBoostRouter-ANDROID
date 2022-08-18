@@ -1,4 +1,4 @@
-package com.sm.android_flutter;
+package com.sm.android_flutter.lib;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,8 +13,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-@Route(path = "/global/degrade")
-public class DegradeServiceImpl implements DegradeService {
+@Route(path = "/route/degrade")
+public class RouteDegradeService implements DegradeService {
     @Override
     public void onLost(Context context, Postcard postcard) {
         FlutterBoost.instance().open(createFlutterBoostRouteOptions(postcard));

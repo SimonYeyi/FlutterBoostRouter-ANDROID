@@ -1,4 +1,4 @@
-package com.sm.android_flutter;
+package com.sm.android_flutter.lib;
 
 import com.idlefish.flutterboost.FlutterBoostSetupOptions;
 

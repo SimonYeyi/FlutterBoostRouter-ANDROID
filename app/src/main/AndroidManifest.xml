@@ -35,14 +35,14 @@
             android:theme="@style/Theme.AppCompat"
             android:windowSoftInputMode="adjustResize"></activity>
 
-        <activity android:name=".YourTargetActivity" />
+        <activity android:name=".module.YourTargetActivity" />
 
         <meta-data
             android:name="flutterEmbedding"
             android:value="2"></meta-data>
 
         <activity
-            android:name=".SchemeFilterActivity"
+            android:name=".lib.ARouterSchemeFilterActivity"
             android:exported="true">
             <!-- Scheme -->
             <intent-filter>
