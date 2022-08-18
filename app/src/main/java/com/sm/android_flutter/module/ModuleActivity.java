@@ -8,8 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.idlefish.flutterboost.FlutterBoost;
 
-@Route(path = "/target/your")
-public class YourTargetActivity extends AppCompatActivity {
+@Route(path = "/module/your")
+public class ModuleActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {

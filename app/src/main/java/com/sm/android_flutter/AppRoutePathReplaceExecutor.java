@@ -10,7 +10,7 @@ public class AppRoutePathReplaceExecutor implements RoutePathReplaceExecutor {
     public String replace(String path) {
         switch (path) {
             case "/your":
-                return "/target/your";
+                return "/module/your";
             default:
                 return path;
         }
