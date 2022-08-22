@@ -15,8 +15,8 @@ class AppPlugin {
   AppPlugin() {
     _methodChannel.setMethodCallHandler((call) async {
       switch (call.method) {
-        case "flutterMethod":
-          print("invoke flutterMethod");
+        case "test":
+          print("invoke test method");
           break;
         default:
           break;

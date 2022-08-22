@@ -8,19 +8,15 @@ import io.flutter.plugin.common.MethodChannel;
 
 public class AppFlutterPlugin implements FlutterPlugin {
 
-    private MethodChannel methodChannel;
-
     @Override
     public void onAttachedToEngine(@NonNull FlutterPluginBinding binding) {
         BinaryMessenger binaryMessenger = binding.getBinaryMessenger();
-        methodChannel = new MethodChannel(binaryMessenger, "com.premom.lib_flutter/native_flutter");
+        MethodChannel methodChannel = new MethodChannel(binaryMessenger, "com.premom.lib_flutter/native_flutter");
         methodChannel.setMethodCallHandler(new NativeMethodCallDispatcher());
-        FlutterMethods.setup(methodChannel);
+        FlutterMethodChannel.setup(methodChannel);
     }
 
     @Override
     public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {
-        methodChannel.setMethodCallHandler(null);
-        methodChannel = null;
     }
 }

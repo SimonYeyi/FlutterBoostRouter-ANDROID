@@ -10,15 +10,16 @@ import io.flutter.plugin.common.MethodChannel;
 
 @Route(path = "/module/method_handler")
 public class ModuleMethodHandler implements NativeMethodCallHandler {
+    private final ModuleService moduleService = ModuleServiceFactory.get();
 
     @Override
     public void onMethodCall(@NonNull MethodCall call, @NonNull MethodChannel.Result result) {
         switch (call.method) {
             case "getInfo":
-                result.success("info");
+                String info = moduleService.getInfo();
+                result.success(info);
                 break;
             default:
-                result.notImplemented();
                 break;
         }
     }
