@@ -3,14 +3,17 @@ package com.sm.android_flutter.lib;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RoutePathReplacer {
-    private static final List<RoutePathReplaceExecutor> pathReplaceExecutors = new ArrayList<>();
+public enum RoutePathReplacer implements RoutePathReplaceExecutor {
+    INSTANCE;
 
-    public static void addExecutor(RoutePathReplaceExecutor pathReplaceExecutor) {
+    private final List<RoutePathReplaceExecutor> pathReplaceExecutors = new ArrayList<>();
+
+    public void addExecutor(RoutePathReplaceExecutor pathReplaceExecutor) {
         pathReplaceExecutors.add(pathReplaceExecutor);
     }
 
-    public static String replace(String path) {
+    @Override
+    public String replace(String path) {
         String replacedPath = path;
         for (RoutePathReplaceExecutor executor : pathReplaceExecutors) {
             replacedPath = executor.replace(path);

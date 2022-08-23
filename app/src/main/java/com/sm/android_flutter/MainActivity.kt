@@ -7,6 +7,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.idlefish.flutterboost.containers.FlutterActivityLaunchConfigs
 import com.sm.android_flutter.databinding.ActivityFullscreenBinding
+import com.sm.android_flutter.lib.withRequestCodeNavigation
 import com.sm.android_flutter.module.ModuleServiceFactory
 
 @Route(path = "/target/main")
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity() {
             ARouter.getInstance().build("/")
                 .withInt("requestCode", REQUEST_CODE_FLUTTER_ROOT)
                 .withString("data", "From MainActivity")
-                .navigation(this)
+                .withRequestCodeNavigation(-1)
 /*            FlutterBoost.instance()
                 .open(
                     FlutterBoostRouteOptions.Builder().pageName("/")

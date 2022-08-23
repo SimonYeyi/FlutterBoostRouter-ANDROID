@@ -17,8 +17,8 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         ARouter.init(this);
-        RoutePathReplacer.addExecutor(ARouter.getInstance().navigation(RoutePathReplaceExecutor.class));
+        RoutePathReplacer.INSTANCE.addExecutor(ARouter.getInstance().navigation(RoutePathReplaceExecutor.class));
         NativeMethodCallDispatcher.registerHandler(((NativeMethodCallHandler) ARouter.getInstance().build("/module/method_handler").navigation()));
-        FlutterBoost.instance().setup(this, new ARouterFlutterBoostDelegate(), engine -> engine.getPlugins().add(new AppFlutterPlugin()), FlutterBoostSetupOptionsFactory.create());
+        FlutterBoost.instance().setup(this, new ARouterFlutterBoostDelegate(), engine -> engine.getPlugins().add(new AppFlutterPlugin()), FlutterBoostSetupOptionsFactory.create(this));
     }
 }
