@@ -13,8 +13,6 @@ import androidx.fragment.app.Fragment;
 import java.util.HashMap;
 import java.util.Map;
 
-import io.flutter.embedding.android.FlutterFragment;
-
 public class LazyFlutterFragment extends Fragment {
     private static final String EXTRAS_PATH = "EXTRAS_PATH";
     private static final String EXTRAS_ARGUMENTS = "EXTRAS_ARGUMENTS";
@@ -74,7 +72,7 @@ public class LazyFlutterFragment extends Fragment {
         Fragment flutterFragment = FlutterFragmentFactory.create(path, arguments);
         getChildFragmentManager()
                 .beginTransaction()
-                .add(android.R.id.widget_frame, flutterFragment)
+                .replace(android.R.id.widget_frame, flutterFragment)
                 .commitAllowingStateLoss();
     }
 }

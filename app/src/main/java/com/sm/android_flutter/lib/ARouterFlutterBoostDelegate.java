@@ -10,14 +10,32 @@ import com.idlefish.flutterboost.FlutterBoostRouteOptions;
 import com.idlefish.flutterboost.containers.FlutterBoostActivity;
 
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import io.flutter.embedding.android.FlutterActivityLaunchConfigs;
 
 public class ARouterFlutterBoostDelegate implements FlutterBoostDelegate {
+    private final List<String> specialPageNames;
+    private final NativeRouteHandler specialNativeRouteHandler;
+
+    public ARouterFlutterBoostDelegate() {
+        this(Collections.emptyList(), null);
+    }
+
+    public ARouterFlutterBoostDelegate(List<String> specialPageNames, NativeRouteHandler nativeRouteHandler) {
+        this.specialPageNames = specialPageNames;
+        this.specialNativeRouteHandler = nativeRouteHandler;
+    }
+
     @Override
     public void pushNativeRoute(FlutterBoostRouteOptions options) {
+        if (specialPageNames.contains(options.pageName())) {
+            specialNativeRouteHandler.pushNativeRoute(options);
+            return;
+        }
         Map<String, Object> arguments = options.arguments();
         Postcard postcard = ARouter.getInstance().build(options.pageName());
         if (arguments != null) {
@@ -54,5 +72,9 @@ public class ARouterFlutterBoostDelegate implements FlutterBoostDelegate {
                 .urlParams(options.arguments() == null ? new HashMap<>() : options.arguments())
                 .build(FlutterBoost.instance().currentActivity());
         FlutterBoost.instance().currentActivity().startActivityForResult(intent, options.requestCode());
+    }
+
+    public interface NativeRouteHandler {
+        void pushNativeRoute(FlutterBoostRouteOptions options);
     }
 }

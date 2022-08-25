@@ -1,13 +1,24 @@
 package com.sm.android_flutter.lib;
 
-import android.content.Context;
+import java.util.ArrayList;
+import java.util.List;
 
-import com.alibaba.android.arouter.facade.template.IProvider;
+public enum RoutePathReplaceExecutor implements RoutePathReplacer {
+    INSTANCE;
 
-public interface RoutePathReplaceExecutor extends IProvider {
-    String replace(String path);
+    private final List<RoutePathReplacer> pathReplacerList = new ArrayList<>();
+
+    public void addReplacer(RoutePathReplacer replacer) {
+        pathReplacerList.add(replacer);
+    }
 
     @Override
-    default void init(Context context) {
+    public String replace(String path) {
+        String replacedPath = path;
+        for (RoutePathReplacer replacer : pathReplacerList) {
+            replacedPath = replacer.replace(path);
+            if (!replacedPath.equals(path)) break;
+        }
+        return replacedPath;
     }
 }

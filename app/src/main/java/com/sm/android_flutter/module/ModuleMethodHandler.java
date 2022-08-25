@@ -1,15 +1,18 @@
 package com.sm.android_flutter.module;
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.facade.template.IProvider;
 import com.sm.android_flutter.lib.NativeMethodCallHandler;
 
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 
 @Route(path = "/module/method_handler")
-public class ModuleMethodHandler implements NativeMethodCallHandler {
+public class ModuleMethodHandler implements NativeMethodCallHandler, IProvider {
     private final ModuleService moduleService = ModuleServiceFactory.get();
 
     @Override
@@ -22,5 +25,10 @@ public class ModuleMethodHandler implements NativeMethodCallHandler {
             default:
                 break;
         }
+    }
+
+    @Override
+    public void init(Context context) {
+
     }
 }

@@ -37,10 +37,6 @@
 
         <activity android:name=".module.ModuleActivity" />
 
-        <meta-data
-            android:name="flutterEmbedding"
-            android:value="2"></meta-data>
-
         <activity
             android:name=".lib.ARouterSchemeFilterActivity"
             android:exported="true">

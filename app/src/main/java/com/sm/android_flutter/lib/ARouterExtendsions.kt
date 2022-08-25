@@ -4,7 +4,7 @@ import com.alibaba.android.arouter.facade.Postcard
 import com.alibaba.android.arouter.facade.callback.NavigationCallback
 import com.idlefish.flutterboost.FlutterBoost
 
-fun Postcard.withRequestCodeNavigation(requestCode: Int, callback: NavigationCallback?) {
+fun Postcard.navigationWithRequestCode(requestCode: Int, callback: NavigationCallback?) {
     withInt("requestCode", requestCode)
         .navigation(
             FlutterBoost.instance().currentActivity(),
@@ -13,6 +13,6 @@ fun Postcard.withRequestCodeNavigation(requestCode: Int, callback: NavigationCal
         )
 }
 
-fun Postcard.withRequestCodeNavigation(requestCode: Int) {
-    withRequestCodeNavigation(requestCode, null)
+fun Postcard.navigationWithRequestCode(requestCode: Int) {
+    navigationWithRequestCode(requestCode, null)
 }

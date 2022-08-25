@@ -10,10 +10,24 @@ import com.alibaba.android.arouter.facade.service.PathReplaceService;
 public class RoutePathReplaceService implements PathReplaceService {
     @Override
     public String forString(String path) {
-        if (!path.startsWith("/")) path = String.format("/%s", path);
-        String replacedPath = RoutePathReplacer.INSTANCE.replace(path);
-        if (replacedPath.lastIndexOf("/") == 0) replacedPath = String.format("/flutter%s", path);
-        return replacedPath;
+        final String replacedPath = RoutePathReplaceExecutor.INSTANCE.replace(path);
+        final String prefix = "/";
+        String prefixPath = replacedPath;
+        if (!replacedPath.startsWith(prefix)) {
+            prefixPath = prefix + replacedPath;
+        }
+        if (replacedPath.lastIndexOf("/") == 0) {
+            prefixPath = prefix + "flutter" + replacedPath;
+        }
+        if (!replacedPath.equals(prefixPath)) {
+            String auto_prefix = replaceLast(prefixPath, replacedPath, "");
+            prefixPath += "/auto_prefix_" + auto_prefix;
+        }
+        return prefixPath;
+    }
+
+    private static String replaceLast(String string, String regex, String replacement) {
+        return string.replaceFirst("(?s)(.*)" + regex, "$1" + replacement);
     }
 
     @Override

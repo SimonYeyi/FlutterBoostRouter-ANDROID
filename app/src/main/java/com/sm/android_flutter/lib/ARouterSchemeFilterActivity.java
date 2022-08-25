@@ -11,7 +11,6 @@ public class ARouterSchemeFilterActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         Uri uri = getIntent().getData();
         ARouter.getInstance().build(uri).navigation();
         finish();

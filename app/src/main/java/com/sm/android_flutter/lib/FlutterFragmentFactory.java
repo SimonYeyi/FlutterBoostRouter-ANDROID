@@ -7,8 +7,6 @@ import com.idlefish.flutterboost.containers.FlutterBoostFragment;
 import java.util.HashMap;
 import java.util.Map;
 
-import io.flutter.embedding.android.FlutterFragment;
-
 public class FlutterFragmentFactory {
 
     private static Fragment create(String path, boolean lazy, Map<String, Object> arguments) {
