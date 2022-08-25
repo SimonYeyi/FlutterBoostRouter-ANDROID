@@ -1,5 +1,7 @@
 package com.sm.android_flutter.lib;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +10,7 @@ public enum RoutePathReplaceExecutor implements RoutePathReplacer {
 
     private final List<RoutePathReplacer> pathReplacerList = new ArrayList<>();
 
-    public void addReplacer(RoutePathReplacer replacer) {
+    public void addReplacer(@NonNull RoutePathReplacer replacer) {
         pathReplacerList.add(replacer);
     }
 

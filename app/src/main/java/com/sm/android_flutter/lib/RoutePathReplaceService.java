@@ -8,6 +8,7 @@ import com.alibaba.android.arouter.facade.service.PathReplaceService;
 
 @Route(path = "/route/path_replace")
 public class RoutePathReplaceService implements PathReplaceService {
+
     @Override
     public String forString(String path) {
         final String replacedPath = RoutePathReplaceExecutor.INSTANCE.replace(path);
@@ -16,8 +17,8 @@ public class RoutePathReplaceService implements PathReplaceService {
         if (!replacedPath.startsWith(prefix)) {
             prefixPath = prefix + replacedPath;
         }
-        if (replacedPath.lastIndexOf("/") == 0) {
-            prefixPath = prefix + "flutter" + replacedPath;
+        if (prefixPath.lastIndexOf("/") == 0) {
+            prefixPath = prefix + "flutter" + prefixPath;
         }
         if (!replacedPath.equals(prefixPath)) {
             String auto_prefix = replaceLast(prefixPath, replacedPath, "");

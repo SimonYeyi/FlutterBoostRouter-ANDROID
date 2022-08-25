@@ -19,11 +19,7 @@ public class PrefixPretreatmentService implements PretreatmentService {
         String path = postcard.getPath();
         String[] pathSplit = path.split("/auto_prefix_");
         if (pathSplit.length > 1) {
-            postcard.setPath(pathSplit[0]);
-            String autoPrefix = pathSplit[1];
-            if (!"/".equals(autoPrefix)) {
-                postcard.withString("autoPrefix", autoPrefix);
-            }
+            postcard.setPath(pathSplit[0].replaceFirst(pathSplit[1], ""));
         }
         return true;
     }

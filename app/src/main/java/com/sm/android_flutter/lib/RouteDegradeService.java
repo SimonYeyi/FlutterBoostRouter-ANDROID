@@ -27,12 +27,9 @@ public class RouteDegradeService implements DegradeService {
 
     private FlutterBoostRouteOptions createFlutterBoostRouteOptions(Postcard postcard) {
         FlutterBoostRouteOptions.Builder optionsBuilder = new FlutterBoostRouteOptions.Builder();
+        optionsBuilder.pageName(postcard.getPath());
         Bundle bundle = postcard.getExtras();
         if (bundle == null) return optionsBuilder.build();
-
-        String autoPrefix = bundle.getString("autoPrefix","");
-        optionsBuilder.pageName(postcard.getPath().replace(autoPrefix, ""));
-
         Set<String> keySet = bundle.keySet();
         if (keySet == null) return optionsBuilder.build();
         Map<String, Object> arguments = new HashMap<>(keySet.size());
