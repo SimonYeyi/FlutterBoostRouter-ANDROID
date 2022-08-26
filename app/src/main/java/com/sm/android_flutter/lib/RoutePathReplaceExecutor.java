@@ -8,16 +8,16 @@ import java.util.List;
 public enum RoutePathReplaceExecutor implements RoutePathReplacer {
     INSTANCE;
 
-    private final List<RoutePathReplacer> pathReplacerList = new ArrayList<>();
+    private final List<RoutePathReplacer> replacerList = new ArrayList<>();
 
-    public void addReplacer(@NonNull RoutePathReplacer replacer) {
-        pathReplacerList.add(replacer);
+    public void addReplacer(@NonNull List<RoutePathReplacer> replacerList) {
+        this.replacerList.addAll(replacerList);
     }
 
     @Override
     public String replace(String path) {
         String replacedPath = path;
-        for (RoutePathReplacer replacer : pathReplacerList) {
+        for (RoutePathReplacer replacer : replacerList) {
             replacedPath = replacer.replace(path);
             if (!replacedPath.equals(path)) break;
         }

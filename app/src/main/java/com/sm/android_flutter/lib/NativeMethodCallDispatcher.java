@@ -11,8 +11,8 @@ import io.flutter.plugin.common.MethodChannel;
 public final class NativeMethodCallDispatcher implements MethodChannel.MethodCallHandler {
     private final static List<NativeMethodCallHandler> handlers = new ArrayList<>();
 
-    public static void registerHandler(NativeMethodCallHandler handler) {
-        handlers.add(handler);
+    public static void registerHandlers(List<NativeMethodCallHandler> handlers) {
+        NativeMethodCallDispatcher.handlers.addAll(handlers);
     }
 
     @Override

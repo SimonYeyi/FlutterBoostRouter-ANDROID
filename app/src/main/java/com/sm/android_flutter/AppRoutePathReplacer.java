@@ -1,14 +1,10 @@
 package com.sm.android_flutter;
 
-import android.content.Context;
-
-import com.alibaba.android.arouter.facade.annotation.Route;
-import com.alibaba.android.arouter.facade.template.IProvider;
-import com.sm.android_flutter.lib.RoutePathReplaceExecutor;
+import com.google.auto.service.AutoService;
 import com.sm.android_flutter.lib.RoutePathReplacer;
 
-@Route(path = "/app/route/path_replace")
-public class AppRoutePathReplacer implements RoutePathReplacer, IProvider {
+@AutoService(RoutePathReplacer.class)
+public class AppRoutePathReplacer implements RoutePathReplacer {
 
     @Override
     public String replace(String path) {
@@ -18,10 +14,5 @@ public class AppRoutePathReplacer implements RoutePathReplacer, IProvider {
             default:
                 return path;
         }
-    }
-
-    @Override
-    public void init(Context context) {
-
     }
 }
