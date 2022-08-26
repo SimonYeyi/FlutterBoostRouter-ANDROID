@@ -35,11 +35,14 @@ public class RouteDegradeService implements DegradeService {
         Map<String, Object> arguments = new HashMap<>(keySet.size());
         optionsBuilder.arguments(arguments);
         for (String key : keySet) {
-            if (key.equals("requestCode")) {
-                optionsBuilder.requestCode(bundle.getInt(key));
-            } else {
-                arguments.put(key, bundle.get(key));
-            }
+            arguments.put(key, bundle.get(key));
+        }
+        Integer requestCode = (Integer) bundle.get("requestCode");
+        if (requestCode == null) {
+            optionsBuilder.requestCode(-1);
+        } else {
+            arguments.remove("requestCode");
+            optionsBuilder.requestCode(requestCode);
         }
         return optionsBuilder.build();
     }
