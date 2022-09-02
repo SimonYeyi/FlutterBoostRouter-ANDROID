@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_boost/flutter_boost.dart';
 import 'package:get/get.dart';
 import 'package:lib_flutterboost/app_plugin.dart';
@@ -73,14 +74,18 @@ class _MyAppState extends State<MyApp> {
   }
 
   Widget appBuilder(Widget home) {
-    return MaterialApp(
-      home: home,
-      debugShowCheckedModeBanner: true,
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      child: MaterialApp(
+        home: home,
+        debugShowCheckedModeBanner: true,
 
-      ///必须加上builder参数，否则showDialog等会出问题
-      builder: (_, __) {
-        return home;
-      },
+        ///必须加上builder参数，否则showDialog等会出问题
+        builder: (_, __) {
+          return home;
+        },
+      ),
+      value: SystemUiOverlayStyle.light
+          .copyWith(statusBarColor: Colors.transparent),
     );
   }
 
@@ -102,6 +107,8 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        systemOverlayStyle: SystemUiOverlayStyle.light
+            .copyWith(statusBarColor: Colors.transparent),
         title: const Text("MainPage"),
         leading: BackButton(
           onPressed: () {
@@ -132,6 +139,10 @@ class SimplePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        systemOverlayStyle: SystemUiOverlayStyle.dark
+            .copyWith(statusBarColor: Colors.transparent),
+      ),
       body: Center(
         child: GestureDetector(
           onTap: () async {
