@@ -84,8 +84,7 @@ class _MyAppState extends State<MyApp> {
           return home;
         },
       ),
-      value: SystemUiOverlayStyle.light
-          .copyWith(statusBarColor: Colors.transparent),
+      value: SystemUiOverlayStyle.light,
     );
   }
 
@@ -107,8 +106,6 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        systemOverlayStyle: SystemUiOverlayStyle.light
-            .copyWith(statusBarColor: Colors.transparent),
         title: const Text("MainPage"),
         leading: BackButton(
           onPressed: () {
@@ -140,8 +137,8 @@ class SimplePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        systemOverlayStyle: SystemUiOverlayStyle.dark
-            .copyWith(statusBarColor: Colors.transparent),
+        systemOverlayStyle: SystemUiOverlayStyle.light,
+        backgroundColor: Colors.purple,
       ),
       body: Center(
         child: GestureDetector(
