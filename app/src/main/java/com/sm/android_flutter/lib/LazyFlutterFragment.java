@@ -10,9 +10,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.idlefish.flutterboost.containers.FlutterBoostFragment;
+
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Use {@link FlutterBoostFragment} instead.
+ */
+@Deprecated
 public class LazyFlutterFragment extends Fragment {
     private static final String EXTRAS_PATH = "EXTRAS_PATH";
     private static final String EXTRAS_ARGUMENTS = "EXTRAS_ARGUMENTS";
