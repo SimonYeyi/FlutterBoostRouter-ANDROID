@@ -60,8 +60,7 @@ public class FlutterFragmentFactory {
 
         @Override
         protected void onUpdateSystemUiOverlays() {
-            super.onUpdateSystemUiOverlays();
-            getActivity().getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            //super.onUpdateSystemUiOverlays();
         }
     }
 }
