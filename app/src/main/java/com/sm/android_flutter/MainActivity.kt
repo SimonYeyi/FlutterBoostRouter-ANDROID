@@ -7,6 +7,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.idlefish.flutterboost.containers.FlutterActivityLaunchConfigs
 import com.sm.android_flutter.databinding.ActivityFullscreenBinding
+import com.sm.android_flutter.lib.navigationWithRequestCode
 import com.sm.android_flutter.module.ModuleServiceFactory
 
 @Route(path = "/target/main")
@@ -21,8 +22,8 @@ class MainActivity : AppCompatActivity() {
 
         binding.root.setOnClickListener {
             ARouter.getInstance().build("/")
-                .withString("data", "From MainActivity")
-                .navigation()
+                .withString("data", "from main activity")
+                .navigationWithRequestCode(REQUEST_CODE_FLUTTER_ROOT)
 /*            FlutterBoost.instance()
                 .open(
                     FlutterBoostRouteOptions.Builder().pageName("/")
@@ -36,13 +37,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        println(
-            "requestCode=$requestCode, result=${
-                data?.getSerializableExtra(
-                    FlutterActivityLaunchConfigs.ACTIVITY_RESULT_KEY
-                )
-            }"
-        )
+        if (requestCode == REQUEST_CODE_FLUTTER_ROOT) {
+            binding.fullscreenContent.text = data?.getSerializableExtra(
+                FlutterActivityLaunchConfigs.ACTIVITY_RESULT_KEY
+            ).toString()
+        } else {
+            binding.fullscreenContent.text = "other request code:$requestCode";
+        }
     }
 
     companion object {

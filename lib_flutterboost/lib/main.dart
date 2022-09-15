@@ -50,11 +50,25 @@ class _MyAppState extends State<MyApp> {
                 settings.arguments as Map<String, dynamic>?;
             String? data = map?['data'] as String?;
             return MainPage(
+              title: "main",
               data: data,
             );
           });
     },
-    'simplePage': (settings, uniqueId) {
+    'home': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            Map<String, dynamic>? map =
+                settings.arguments as Map<String, dynamic>?;
+            String? data = map?['data'] as String?;
+            return MainPage(
+              title: "home",
+              data: data,
+            );
+          });
+    },
+    'simple': (settings, uniqueId) {
       return CupertinoPageRoute(
           settings: settings,
           builder: (_) {
@@ -98,28 +112,29 @@ class _MyAppState extends State<MyApp> {
 }
 
 class MainPage extends StatelessWidget {
+  final String title;
   final String? data;
 
-  const MainPage({this.data});
+  MainPage({required this.title, this.data});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("MainPage"),
+        title: Text(title),
         leading: BackButton(
           onPressed: () {
-            BoostNavigator.instance.pop({"result": "result callback"});
+            Navigator.of(context).pop({"result": "pop with back button"});
           },
         ),
       ),
       body: Center(
         child: InkWell(
           onTap: () {
-            BoostNavigator.instance
-                .push("simplePage", arguments: {"data": "From Main"});
+            Navigator.of(context).pushNamed("simple",
+                arguments: {"data": "push from $title page"});
           },
-          child: Text(data ?? "Null"),
+          child: Text(data ?? "null"),
         ),
       ),
     );
@@ -127,7 +142,7 @@ class MainPage extends StatelessWidget {
 }
 
 class SimplePage extends StatelessWidget {
-  late Rx<Object> data;
+  final Rx<Object> data;
 
   SimplePage({Key? key, required Object data})
       : data = data.obs,
@@ -137,23 +152,25 @@ class SimplePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: BackButton(
+          onPressed: () {
+            while(Navigator.of(context).canPop()){
+              Navigator.of(context).pop();
+            }
+            BoostNavigator.instance.pushReplacement("home",
+                arguments: {"data": "push from simple page"});
+          },
+        ),
         systemOverlayStyle: SystemUiOverlayStyle.light,
         backgroundColor: Colors.purple,
       ),
       body: Center(
         child: GestureDetector(
           onTap: () async {
-            final result = await BoostNavigator.instance.push("/your",
-                arguments: {
-                  "a": "a",
-                  "b": 1,
-                  "c": true,
-                  "d": 1.0,
-                  "e": 11111111111,
-                  "f": {},
-                  "g": []
-                });
-            data.value = result!;
+            final result = await Navigator.of(context).pushNamed("home",
+                arguments: {"data": "push from simple page"});
+
+            data.value = result ?? "null";
           },
           child: Obx(() {
             return Text(data.toString());
