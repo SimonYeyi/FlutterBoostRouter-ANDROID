@@ -1,6 +1,7 @@
 package com.sm.android_flutter.lib;
 
 import android.content.Intent;
+import android.os.Bundle;
 
 import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -36,30 +37,9 @@ public class ARouterFlutterBoostDelegate implements FlutterBoostDelegate {
             specialNativeRouteHandler.pushNativeRoute(options);
             return;
         }
-        Map<String, Object> arguments = options.arguments();
-        Postcard postcard = ARouter.getInstance().build(options.pageName());
-        if (arguments != null) {
-            for (Map.Entry<String, Object> entry : arguments.entrySet()) {
-                String key = entry.getKey();
-                Object value = entry.getValue();
-                if (value instanceof Boolean) {
-                    postcard.withBoolean(key, (Boolean) value);
-                } else if (value instanceof Integer) {
-                    postcard.withInt(key, (Integer) value);
-                } else if (value instanceof Long) {
-                    postcard.withLong(key, (Long) value);
-                } else if (value instanceof Double) {
-                    postcard.withDouble(key, (Double) value);
-                } else if (value instanceof String) {
-                    postcard.withString(key, (String) value);
-                } else if (value instanceof Serializable) {
-                    postcard.withSerializable(key, (Serializable) value);
-                } else {
-                    throw new IllegalArgumentException("pushNativeRoute arguments type unknown:" + value + ", pageName:" + options.pageName());
-                }
-            }
-        }
-        postcard.navigation(FlutterBoost.instance().currentActivity(), options.requestCode());
+        ARouter.getInstance().build(options.pageName())
+                .with(map2bundle(options.arguments()))
+                .navigation(FlutterBoost.instance().currentActivity(), options.requestCode());
     }
 
     @Override
@@ -72,6 +52,31 @@ public class ARouterFlutterBoostDelegate implements FlutterBoostDelegate {
                 .urlParams(options.arguments() == null ? new HashMap<>() : options.arguments())
                 .build(FlutterBoost.instance().currentActivity());
         FlutterBoost.instance().currentActivity().startActivityForResult(intent, options.requestCode());
+    }
+
+    static Bundle map2bundle(Map<String, Object> arguments) {
+        if (arguments == null) return null;
+        final Bundle bundle = new Bundle();
+        for (Map.Entry<String, Object> entry : arguments.entrySet()) {
+            String key = entry.getKey();
+            Object value = entry.getValue();
+            if (value instanceof Boolean) {
+                bundle.putBoolean(key, (Boolean) value);
+            } else if (value instanceof Integer) {
+                bundle.putInt(key, (Integer) value);
+            } else if (value instanceof Long) {
+                bundle.putLong(key, (Long) value);
+            } else if (value instanceof Double) {
+                bundle.putDouble(key, (Double) value);
+            } else if (value instanceof String) {
+                bundle.putString(key, (String) value);
+            } else if (value instanceof Serializable) {
+                bundle.putSerializable(key, (Serializable) value);
+            } else {
+                throw new IllegalArgumentException("argument type unknown:" + value);
+            }
+        }
+        return bundle;
     }
 
     public interface NativeRouteHandler {

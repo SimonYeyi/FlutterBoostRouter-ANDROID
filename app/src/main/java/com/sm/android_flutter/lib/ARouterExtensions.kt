@@ -16,3 +16,7 @@ fun Postcard.navigationWithRequestCode(requestCode: Int, callback: NavigationCal
 fun Postcard.navigationWithRequestCode(requestCode: Int) {
     navigationWithRequestCode(requestCode, null)
 }
+
+fun Postcard.withAll(params: Map<String, Any?>): Postcard {
+    return with(ARouterFlutterBoostDelegate.map2bundle(params))
+}

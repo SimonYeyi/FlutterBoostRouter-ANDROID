@@ -30,7 +30,7 @@ public class FlutterFragmentFactory {
     }
 
     /**
-     * Use {@link FlutterFragmentFactory#create(String, Map<String, Object>)} instead.
+     * Use {@link FlutterFragmentFactory#create(String, Map)} instead.
      */
     @Deprecated
     public static Fragment createLazy(String path, Map<String, Object> arguments) {
