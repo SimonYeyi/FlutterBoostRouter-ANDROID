@@ -4,27 +4,28 @@
 // utility that Flutter provides. For example, you can send tap and scroll
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:lib_flutterboost/main.dart';
 
-void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp());
+import '../test_driver/app.dart';
 
-    // Verify that our counter starts at 0.
+void main() {
+  testWidgets('widget test', (WidgetTester tester) async {
+    // Build our app and trigger a frame.
+    await tester.pumpWidget(TestMaterialApp(
+      home: MainPage(title: "test", data: "0"),
+    ));
+
+    // Verify
     expect(find.text('0'), findsOneWidget);
     expect(find.text('1'), findsNothing);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
+    // Tap
+    await tester.tap(find.text('0'));
     await tester.pump();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    final simpleText = find.text("push from test page");
+    expect(simpleText, findsOneWidget);
   });
 }
