@@ -3,7 +3,7 @@ package com.sm.android_flutter.module;
 import androidx.annotation.NonNull;
 
 import com.google.auto.service.AutoService;
-import com.sm.android_flutter.lib.NativeMethodCallHandler;
+import com.sm.flutter_boost_router.NativeMethodCallHandler;
 
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;

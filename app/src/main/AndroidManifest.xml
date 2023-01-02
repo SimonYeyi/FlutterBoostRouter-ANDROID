@@ -38,7 +38,7 @@
         <activity android:name=".module.ModuleActivity" />
 
         <activity
-            android:name=".lib.ARouterSchemeFilterActivity"
+            android:name="com.sm.flutter_boost_router.ARouterSchemeFilterActivity"
             android:exported="true">
             <!-- Scheme -->
             <intent-filter>

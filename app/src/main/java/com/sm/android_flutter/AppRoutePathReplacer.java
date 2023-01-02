@@ -1,7 +1,7 @@
 package com.sm.android_flutter;
 
 import com.google.auto.service.AutoService;
-import com.sm.android_flutter.lib.RoutePathReplacer;
+import com.sm.flutter_boost_router.RoutePathReplacer;
 
 @AutoService(RoutePathReplacer.class)
 public class AppRoutePathReplacer implements RoutePathReplacer {

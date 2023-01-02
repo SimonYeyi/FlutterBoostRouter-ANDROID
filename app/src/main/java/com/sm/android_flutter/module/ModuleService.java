@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.facade.template.IProvider;
-import com.sm.android_flutter.lib.FlutterMethodChannel;
+import com.sm.flutter_boost_router.FlutterMethodChannel;
 
 @Route(path = ModuleService.PATH)
 public class ModuleService implements IProvider {

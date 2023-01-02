@@ -1,4 +1,4 @@
-package com.sm.android_flutter.lib
+package com.sm.flutter_boost_router
 
 import com.alibaba.android.arouter.facade.Postcard
 import com.alibaba.android.arouter.facade.callback.NavigationCallback

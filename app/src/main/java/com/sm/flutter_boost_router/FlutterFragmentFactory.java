@@ -1,7 +1,6 @@
-package com.sm.android_flutter.lib;
+package com.sm.flutter_boost_router;
 
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.fragment.app.Fragment;
 

@@ -7,7 +7,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.idlefish.flutterboost.containers.FlutterActivityLaunchConfigs
 import com.sm.android_flutter.databinding.ActivityFullscreenBinding
-import com.sm.android_flutter.lib.navigationWithRequestCode
+import com.sm.flutter_boost_router.navigationWithRequestCode
 import com.sm.android_flutter.module.ModuleServiceFactory
 
 @Route(path = "/target/main")

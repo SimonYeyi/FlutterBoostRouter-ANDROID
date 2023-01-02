@@ -5,14 +5,14 @@ import android.app.Application;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.google.common.collect.Lists;
 import com.idlefish.flutterboost.FlutterBoost;
-import com.sm.android_flutter.lib.AppFlutterPlugin;
-import com.sm.android_flutter.lib.ARouterFlutterBoostDelegate;
-import com.sm.android_flutter.lib.FlutterBoostPluginFix;
-import com.sm.android_flutter.lib.FlutterBoostSetupOptionsFactory;
-import com.sm.android_flutter.lib.NativeMethodCallDispatcher;
-import com.sm.android_flutter.lib.NativeMethodCallHandler;
-import com.sm.android_flutter.lib.RoutePathReplaceExecutor;
-import com.sm.android_flutter.lib.RoutePathReplacer;
+import com.sm.flutter_boost_router.AppFlutterPlugin;
+import com.sm.flutter_boost_router.ARouterFlutterBoostDelegate;
+import com.sm.flutter_boost_router.FlutterBoostPluginFix;
+import com.sm.flutter_boost_router.FlutterBoostSetupOptionsFactory;
+import com.sm.flutter_boost_router.NativeMethodCallDispatcher;
+import com.sm.flutter_boost_router.NativeMethodCallHandler;
+import com.sm.flutter_boost_router.RoutePathReplaceExecutor;
+import com.sm.flutter_boost_router.RoutePathReplacer;
 
 import java.util.ServiceLoader;
 
