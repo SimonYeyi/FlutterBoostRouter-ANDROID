@@ -4,7 +4,7 @@ class AppPlugin {
   static final AppPlugin _instance = AppPlugin();
 
   final MethodChannel _methodChannel =
-      const MethodChannel("com.premom.lib_flutter/native_flutter");
+      const MethodChannel("com.sm.lib_flutter_boost/app_channel");
 
   AppPlugin._();
 

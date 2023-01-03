@@ -8,7 +8,6 @@ import com.idlefish.flutterboost.FlutterBoost;
 import com.sm.flutter_boost_router.AppFlutterPlugin;
 import com.sm.flutter_boost_router.ARouterFlutterBoostDelegate;
 import com.sm.flutter_boost_router.FlutterBoostPluginFix;
-import com.sm.flutter_boost_router.FlutterBoostSetupOptionsFactory;
 import com.sm.flutter_boost_router.NativeMethodCallDispatcher;
 import com.sm.flutter_boost_router.NativeMethodCallHandler;
 import com.sm.flutter_boost_router.RoutePathReplaceExecutor;
@@ -23,7 +22,7 @@ public class App extends Application {
         ARouter.init(this);
         RoutePathReplaceExecutor.INSTANCE.addReplacer(Lists.newArrayList(ServiceLoader.load(RoutePathReplacer.class).iterator()));
         NativeMethodCallDispatcher.registerHandlers(Lists.newArrayList(ServiceLoader.load(NativeMethodCallHandler.class).iterator()));
-        FlutterBoost.instance().setup(this, new ARouterFlutterBoostDelegate(), engine -> engine.getPlugins().add(new AppFlutterPlugin()), FlutterBoostSetupOptionsFactory.create(this));
+        FlutterBoost.instance().setup(this, new ARouterFlutterBoostDelegate(), engine -> engine.getPlugins().add(new AppFlutterPlugin("com.sm.lib_flutter_boost/app_channel")));
         FlutterBoostPluginFix.resetDefaultRequestCode(FlutterBoost.instance().getEngine());
     }
 }
